@@ -22,9 +22,6 @@ jobs:
   fmt:
     name: Rustfmt
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: back_end
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
@@ -34,5 +31,5 @@ jobs:
           components: rustfmt
       - uses: actions-rs/cargo@v1
         with:
-          command: fmt
+          command: fmt --manifest-path back_end
           args: --all -- --check
