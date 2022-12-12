@@ -19,8 +19,8 @@ jobs:
           ls
         working-directory: ./back_end
       - run: echo "🍏 This job's status is ${{ job.status }}."
-  test:
-    name: Test
+  fmt:
+    name: Rustfmt
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -29,9 +29,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
-          profile: minimal
           toolchain: stable
           override: true
+          components: rustfmt
       - uses: actions-rs/cargo@v1
         with:
-          command: test
+          command: fmt
+          args: --all -- --check
