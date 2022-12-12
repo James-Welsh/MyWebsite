@@ -24,14 +24,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        working-directory: ./back_end
+        with:
+          working-directory: ./back_end
       - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
           override: true
-        working-directory: ./back_end
+          working-directory: ./back_end
       - uses: actions-rs/cargo@v1
         with:
           command: test
-        working-directory: ./back_end
+          working-directory: ./back_end
