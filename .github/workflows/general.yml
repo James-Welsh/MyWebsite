@@ -31,5 +31,5 @@ jobs:
           components: rustfmt
       - uses: actions-rs/cargo@v1
         with:
-          command: fmt --manifest-path back_end
+          command: fmt --manifest-path back_end/Cargo.toml
           args: --all -- --check
