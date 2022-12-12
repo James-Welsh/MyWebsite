@@ -23,18 +23,15 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - run: step1
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         working-directory: ./back_end
-      - run: step2
-        uses: actions-rs/toolchain@v1
+      - uses: actions-rs/toolchain@v1
         with:
           profile: minimal
           toolchain: stable
           override: true
         working-directory: ./back_end
-      - run: step3
-        uses: actions-rs/cargo@v1
+      - uses: actions-rs/cargo@v1
         with:
           command: test
         working-directory: ./back_end
