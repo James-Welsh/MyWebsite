@@ -41,16 +41,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: actions-rs_toolchain
-        uses: actions-rs/toolchain@v1
-        working-directory: back_end
+      - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
           components: clippy
-      - name: actions-rs_clippy-check@v1
-        uses: actions-rs/clippy-check@v1
-        working-directory: back_end
+      - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          args: -- -D warnings
+        run: |
+          cd back_end/
+          cargo clippy -D
