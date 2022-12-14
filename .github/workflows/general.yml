@@ -49,6 +49,4 @@ jobs:
       - uses: actions-rs/clippy-check@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cd back_end/
-          cargo clippy -D
+          args: -D --manifest-path back_end/Cargo.toml
