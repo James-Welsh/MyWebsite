@@ -68,3 +68,12 @@ jobs:
         uses: actions-rs/tarpaulin@v0.1
         with:
           args: --ignore-tests --manifest-path back_end/Cargo.toml
+
+  security_audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions-rs/audit-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --manifest-path back_end/Cargo.toml
